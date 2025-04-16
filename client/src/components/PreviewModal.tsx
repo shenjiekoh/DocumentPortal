@@ -1,4 +1,4 @@
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Document } from "@shared/schema";
 import { Download, AlertCircle } from "lucide-react";
@@ -54,15 +54,26 @@ export default function PreviewModal({
       
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.style.display = 'none';
+      
+      // Use the global document object to create a link element
+      const a = globalThis.document.createElement('a');
       a.href = url;
       a.download = filename;
-      document.body.appendChild(a);
+      a.style.display = 'none';
+      
+      // Add to DOM, click and remove
+      globalThis.document.body.appendChild(a);
       a.click();
-      window.URL.revokeObjectURL(url);
+      
+      // Clean up
+      setTimeout(() => {
+        globalThis.document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      }, 100);
+      
       onSuccess('Document downloaded successfully!');
     } catch (error) {
+      console.error('Download error:', error);
       onError(error instanceof Error ? error.message : 'Failed to download document');
     } finally {
       setIsDownloading(false);
@@ -75,17 +86,16 @@ export default function PreviewModal({
   return (
     <Dialog open={true} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl">
+        <DialogTitle>{document.name}</DialogTitle>
+        <DialogDescription>
+          <span className="text-sm text-gray-500">
+            {formatSize(document.size)} • {formatDate(document.uploadedAt)}
+          </span>
+        </DialogDescription>
         <div className="bg-white p-6">
           <div className="flex items-start justify-between">
             <div className="mt-3 text-center sm:mt-0 sm:text-left w-full">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">
-                {document.name}
-              </h3>
-              <div className="mt-2 flex justify-between items-center text-sm text-gray-500">
-                <div>
-                  <span>{formatSize(document.size)}</span> • 
-                  <span>{formatDate(document.uploadedAt)}</span>
-                </div>
+              <div className="flex justify-end">
                 <Button
                   onClick={downloadDocument}
                   disabled={isDownloading}

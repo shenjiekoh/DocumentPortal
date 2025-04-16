@@ -79,15 +79,28 @@ export default function DocumentCard({
       
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.style.display = 'none';
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
+      
+      // Create a link element using the browser's document object, not our document variable
+      const link = window.document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      link.style.display = 'none';
+      
+      // Append to the document body
+      window.document.body.appendChild(link);
+      
+      // Programmatically click the link
+      link.click();
+      
+      // Clean up
+      setTimeout(() => {
+        window.document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      }, 100);
+      
       onSuccess('Document downloaded successfully!');
     } catch (error) {
+      console.error('Download error:', error);
       onError(error instanceof Error ? error.message : 'Failed to download document');
     } finally {
       setIsDownloading(false);
