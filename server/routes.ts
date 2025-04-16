@@ -136,7 +136,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "File not found" });
       }
 
+      // Set proper content type and additional headers for better handling
       res.setHeader('Content-Type', document.mimeType);
+      
+      // For PDFs, add the inline content disposition to help browser rendering
+      if (document.mimeType === 'application/pdf') {
+        res.setHeader('Content-Disposition', `inline; filename="${document.originalName}"`);
+      }
+      
+      // For Office documents, we can't preview directly in the browser
+      // So we inform the client about the document type for special handling
+      if (document.mimeType.includes('word') || 
+          document.mimeType.includes('excel') || 
+          document.mimeType.includes('powerpoint')) {
+        res.setHeader('X-Document-Type', 'office');
+      }
+      
       res.send(fileBuffer);
     } catch (error) {
       console.error("Error previewing document:", error);

@@ -107,11 +107,17 @@ export default function DocumentCard({
     }
   };
 
-  // Check if document is an image
+  // Check document types
   const isImage = document.mimeType.startsWith('image/');
+  const isPdf = document.mimeType === 'application/pdf';
   
   // Check if document is previewable in browser
-  const isPreviewable = document.mimeType === 'application/pdf' || isImage;
+  // PDF and images can be previewed, Office documents will have a special viewer
+  const isPreviewable = isPdf || isImage || 
+                       document.mimeType.includes('word') || 
+                       document.mimeType.includes('excel') || 
+                       document.mimeType.includes('powerpoint') ||
+                       document.mimeType.includes('officedocument');
 
   return (
     <div className={`bg-white border border-gray-200 rounded-lg shadow overflow-hidden hover:shadow-md transition-shadow duration-200 ${viewMode === 'list' ? 'flex' : ''}`}>
