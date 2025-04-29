@@ -14,10 +14,10 @@ export default function Header() {
   
   return (
     <header className="bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-800">Document Portal</h1>
-          <div className="flex items-center space-x-4">
+          <h1 className="text-2xl font-bold text-gray-800">Labuan RE Form Filling Portal</h1>
+          <div>
             <Button
               variant="outline"
               size="icon"
@@ -34,9 +34,9 @@ export default function Header() {
       <Dialog open={showHelp} onOpenChange={setShowHelp}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Document Portal Help</DialogTitle>
+            <DialogTitle>Labuan RE Form Filling Portal Help</DialogTitle>
             <DialogDescription>
-              This application allows you to upload, preview, and download documents.
+              This application allows you to fill the form by uploading documents.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
@@ -45,19 +45,13 @@ export default function Header() {
               <p className="text-sm text-muted-foreground">
                 Drag and drop files into the upload area or click to browse your files.
                 Supported formats include PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, TXT, JPG, and PNG.
+                Ensure the file size does not exceed 10MB.
               </p>
             </div>
             <div>
-              <h3 className="font-medium">Previewing Documents</h3>
+              <h3 className="font-medium">Downloading Forms</h3>
               <p className="text-sm text-muted-foreground">
-                Click the "Preview" button on any document card to view the document in a modal.
-                Not all document types can be previewed in the browser.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-medium">Downloading Documents</h3>
-              <p className="text-sm text-muted-foreground">
-                Click the "Download" button to save the document to your device.
+                Click the "Download" button to save the completed form to your device.
               </p>
             </div>
           </div>

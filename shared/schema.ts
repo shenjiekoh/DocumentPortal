@@ -24,11 +24,16 @@ export const documents = pgTable("documents", {
   size: integer("size").notNull(),
   path: text("path").notNull(),
   uploadedAt: timestamp("uploadedAt").defaultNow().notNull(),
+  status: text("status").default("uploaded"),
+  processedPath: text("processedPath"),
 });
 
 export const insertDocumentSchema = createInsertSchema(documents).omit({
   id: true,
   uploadedAt: true,
+}).extend({
+  status: z.string().optional(),
+  processedPath: z.string().nullable().optional(),
 });
 
 export type InsertDocument = z.infer<typeof insertDocumentSchema>;

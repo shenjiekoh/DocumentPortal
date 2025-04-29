@@ -1,0 +1,96 @@
+2025-04-23 23:06:34,434 - INFO - Starting DocumentPortal server with npm run dev...
+2025-04-23 23:06:39,452 - ERROR - Failed to start DocumentPortal server: node:events:495
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+    at __node_internal_captureLargerStackTrace (node:internal/errors:496:5)
+    at __node_internal_uvExceptionWithHostPort (node:internal/errors:593:12)
+    at Server.setupListenHandle [as _listen2] (node:net:1811:16)
+    at listenInCluster (node:net:1859:12)
+    at doListen (node:net:2008:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1838:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 5000
+}
+
+Node.js v18.19.1
+
+2025-04-23 23:13:28,427 - INFO - Starting DocumentPortal server with npm run dev...
+2025-04-23 23:13:33,454 - ERROR - Failed to start DocumentPortal server: node:events:495
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+    at __node_internal_captureLargerStackTrace (node:internal/errors:496:5)
+    at __node_internal_uvExceptionWithHostPort (node:internal/errors:593:12)
+    at Server.setupListenHandle [as _listen2] (node:net:1811:16)
+    at listenInCluster (node:net:1859:12)
+    at doListen (node:net:2008:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1838:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 5000
+}
+
+Node.js v18.19.1
+
+2025-04-23 23:21:53,792 - INFO - Starting DocumentPortal server with npm run dev...
+2025-04-23 23:21:58,818 - ERROR - Failed to start DocumentPortal server: node:events:495
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+    at __node_internal_captureLargerStackTrace (node:internal/errors:496:5)
+    at __node_internal_uvExceptionWithHostPort (node:internal/errors:593:12)
+    at Server.setupListenHandle [as _listen2] (node:net:1811:16)
+    at listenInCluster (node:net:1859:12)
+    at doListen (node:net:2008:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1838:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 5000
+}
+
+Node.js v18.19.1
+
+2025-04-23 23:25:05,892 - INFO - Starting DocumentPortal server with npm run dev...
+2025-04-23 23:25:10,893 - ERROR - Failed to start DocumentPortal server: node:events:495
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use 0.0.0.0:5000
+    at __node_internal_captureLargerStackTrace (node:internal/errors:496:5)
+    at __node_internal_uvExceptionWithHostPort (node:internal/errors:593:12)
+    at Server.setupListenHandle [as _listen2] (node:net:1811:16)
+    at listenInCluster (node:net:1859:12)
+    at doListen (node:net:2008:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1838:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 5000
+}
+
+Node.js v18.19.1
+
