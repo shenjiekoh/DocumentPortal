@@ -16,7 +16,7 @@ const execPromise = util.promisify(exec);
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
-    fileSize: MAX_FILE_SIZE // 10MB max file size
+    fileSize: MAX_FILE_SIZE // Now using the increased 100MB limit
   },
   fileFilter: (req, file, cb) => {
     if (SUPPORTED_FILE_TYPES.includes(file.mimetype)) {

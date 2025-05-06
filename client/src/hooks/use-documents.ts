@@ -43,7 +43,6 @@ export function useDocuments() {
           credentials: 'include',
         });
         
-        // 获取响应内容(无论成功或失败)
         const responseText = await response.text();
         console.log("Server response status:", response.status);
         console.log("Server response headers:", Object.fromEntries([...response.headers.entries()]));
@@ -51,16 +50,13 @@ export function useDocuments() {
         
         if (!response.ok) {
           try {
-            // 尝试解析JSON错误消息
             const errorData = JSON.parse(responseText);
             throw new Error(errorData.message || 'Failed to upload document');
           } catch (jsonError) {
-            // 如果无法解析JSON，使用原始响应文本
             throw new Error(`Upload failed: Server returned ${response.status}: ${responseText.substring(0, 100)}`);
           }
         }
         
-        // 如果响应成功，尝试解析JSON
         try {
           return JSON.parse(responseText);
         } catch (jsonError) {
@@ -135,7 +131,6 @@ export function useDocuments() {
   // Delete a document
   const { mutate: deleteDocument, isPending: isDeleting } = useMutation({
     mutationFn: async (id: number) => {
-      // 直接使用fetch而不是apiRequest，以确保请求正确发送
       console.log(`Deleting document with ID: ${id}`);
       const response = await fetch(`/api/documents/${id}`, {
         method: 'DELETE',
@@ -145,7 +140,6 @@ export function useDocuments() {
         }
       });
       
-      // 更详细的错误处理和日志记录
       if (!response.ok) {
         const errorText = await response.text();
         console.error(`Error deleting document: Status ${response.status}`, errorText);
@@ -164,7 +158,6 @@ export function useDocuments() {
     }
   });
 
-  // 添加手动刷新文档列表的函数
   const refetchDocuments = async () => {
     console.log("Manual refetch of documents initiated");
     return await refetch();
@@ -181,7 +174,7 @@ export function useDocuments() {
     processDocument,
     downloadProcessedDocument,
     deleteDocument,
-    refetchDocuments, // 导出新添加的函数
+    refetchDocuments,
   };
 }
 

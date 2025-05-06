@@ -7,7 +7,6 @@ interface DocumentPreviewProps {
 }
 
 export default function DocumentPreview({ document }: DocumentPreviewProps) {
-  // 移除预览功能，改为提供下载按钮
   return (
     <div className="flex flex-col items-center justify-center h-full text-center p-4">
       <AlertCircle className="h-16 w-16 text-gray-400 mb-4" />

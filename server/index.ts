@@ -4,8 +4,9 @@ import { setupVite, serveStatic, log } from "./vite";
 import { storage } from "./storage";
 
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// Increase JSON body size limit to 50MB
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: false, limit: '50mb' }));
 
 // Create a variable to track active user sessions
 let activeConnections = 0;

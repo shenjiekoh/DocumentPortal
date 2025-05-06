@@ -239,11 +239,8 @@ export default function Home() {
 
       console.log("Sending request to process document...");
 
-      // 修改：使用任何状态的文档，不仅仅是 pending 或 uploaded
-      // 如果有 pending 或 uploaded 状态的文档，优先处理它们
       let docToProcess = allUploadedDocuments.find(doc => doc.status === 'pending' || doc.status === 'uploaded');
       
-      // 如果没有 pending 或 uploaded 状态的文档，则处理第一个文档，无论其状态如何
       if (!docToProcess && allUploadedDocuments.length > 0) {
         docToProcess = allUploadedDocuments[0];
       }
@@ -256,20 +253,17 @@ export default function Home() {
 
       console.log(`Processing document ID: ${docId}`);
 
-      // 立即在本地更新文档状态为"processing"
       const updatedDocuments = allUploadedDocuments.map(doc => 
         doc.id === docId 
           ? { ...doc, status: 'processing' } 
           : doc
       );
       
-      // 直接替换 documents 数组中的内容，确保 UI 立即更新
       if (documents) {
         const documentsArray = [...documents];
         const docIndex = documentsArray.findIndex(doc => doc.id === docId);
         if (docIndex !== -1) {
           documentsArray[docIndex] = { ...documentsArray[docIndex], status: 'processing' };
-          // 强制更新 documents 数组
           documents.splice(0, documents.length, ...documentsArray);
         }
       }
@@ -440,7 +434,7 @@ export default function Home() {
         
         <FileUpload onUploadSuccess={handleUpload} />
         
-        {/* 使用hasUploadedDocuments而不是hasPendingDocuments检查是否有任何上传的文档 */}
+        {}
         {hasUploadedDocuments && (
           <div className="mt-6 border-t border-gray-200 pt-4">
             <h3 className="text-md font-medium text-gray-700 mb-2">Uploaded Documents</h3>

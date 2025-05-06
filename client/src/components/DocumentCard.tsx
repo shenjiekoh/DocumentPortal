@@ -42,13 +42,11 @@ export default function DocumentCard({
   const isProcessing = document.status === 'processing';
   const isPending = document.status === 'pending';
   
-  // 根据状态确定显示的标签文本
   const statusLabel = isProcessed ? "Ready" : 
                      isProcessing ? "Processing" : 
                      isError ? "Error" : 
                      "Pending";
                      
-  // 根据状态确定标签的颜色
   const statusColorClass = isProcessed ? "bg-green-100 text-green-800" : 
                           isProcessing ? "bg-yellow-100 text-yellow-800" : 
                           isError ? "bg-red-100 text-red-800" : 
