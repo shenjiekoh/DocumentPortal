@@ -544,7 +544,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // 1. Set paths
       const currentDir = process.cwd();
-      const scriptPath = '/home/sjkoh/labuan-re/table_filler.py';
+      const scriptPath = path.join(process.cwd(), 'table_filler.py');
       const templateDir = path.join(currentDir, 'template');
       const templateName = 'DO_UW WS TEMPLATE_May 2022_use this.docx';
       const templatePath = path.join(templateDir, templateName);
@@ -786,7 +786,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // 1. Set paths
       const currentDir = process.cwd();
-      const scriptPath = '/home/sjkoh/labuan-re/main.py';
+      const scriptPath = path.join(process.cwd(), 'main.py');
       const templateDir = path.join(currentDir, 'template');
       const templateName = 'DO_UW WS TEMPLATE_May 2022_use this.docx';
       const templatePath = path.join(templateDir, templateName);

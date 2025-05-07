@@ -763,7 +763,7 @@ async function registerRoutes(app2) {
     try {
       console.log("Processing template request received");
       const currentDir = process.cwd();
-      const scriptPath = "/home/sjkoh/labuan-re/table_filler.py";
+      const scriptPath = path.join(process.cwd(), 'table_filler.py');
       const templateDir = path2.join(currentDir, "template");
       const templateName = "DO_UW WS TEMPLATE_May 2022_use this.docx";
       const templatePath = path2.join(templateDir, templateName);
@@ -951,7 +951,7 @@ async function registerRoutes(app2) {
     try {
       console.log("Processing template in-memory request received");
       const currentDir = process.cwd();
-      const scriptPath = "/home/sjkoh/labuan-re/main.py";
+      const scriptPath = path.join(process.cwd(), 'main.py');
       const templateDir = path2.join(currentDir, "template");
       const templateName = "DO_UW WS TEMPLATE_May 2022_use this.docx";
       const templatePath = path2.join(templateDir, templateName);

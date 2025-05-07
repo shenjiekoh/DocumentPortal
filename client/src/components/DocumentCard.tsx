@@ -68,9 +68,11 @@ export default function DocumentCard({
     
     // 2. If the file is a processed file, use a fixed processing date
     if (document.status === 'processed' && document.processedPath) {
-      // Use current system date as processing date (in a real application, might need to get actual date from server)
-      const currentDate = new Date();
-      return currentDate.toLocaleString();
+      // Use the document's actual processing date from the server if available
+      const processedDate = document.processedAt || document.updatedAt;
+      if (processedDate) {
+        return new Date(processedDate).toLocaleString();
+      }
     }
     
     // 3. Finally fall back to upload time or creation time
@@ -78,7 +80,7 @@ export default function DocumentCard({
     if (!fallbackDate) return "";
     
     return new Date(fallbackDate).toLocaleString();
-  }, [document.name, document.status, document.processedPath, document.uploadedAt, document.createdAt]);
+  }, [document.name, document.status, document.processedPath, document.uploadedAt, document.createdAt, document.processedAt, document.updatedAt]);
   
   // Helper function to handle download response
   const handleDownloadResponse = async (response: Response, filename: string) => {
